@@ -1,0 +1,81 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Player = game.Players.LocalPlayer
+local Window = OrionLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroEnabled = false})
+
+--[[
+Name = <string> - The name of the UI.
+HidePremium = <bool> - Whether or not the user details shows Premium status or not.
+SaveConfig = <bool> - Toggles the config saving in the UI.
+ConfigFolder = <string> - The name of the folder where the configs are saved.
+IntroEnabled = <bool> - Whether or not to show the intro animation.
+IntroText = <string> - Text to show in the intro animation.
+IntroIcon = <string> - URL to the image you want to use in the intro animation.
+Icon = <string> - URL to the image you want displayed on the window.
+CloseCallback = <function> - Function to execute when the window is closed.
+]]
+
+
+OrionLib:MakeNotification({
+    Name = "Logged In",
+    Content = "You are logged in as"..Player.Name."!",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+})
+
+_G.Key = "Test",
+_G.KeyInput = "string"
+
+
+function MakeScriptHub()
+local window = OrionLib:MakeWindow(Name="KeySystem", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroEnabled = true, introText = "Blue X Hub")
+
+local Tab = Window:MakeTab({
+    Name = "Test",
+    Icon = "rbxassetId://4483345998",
+    PremiumOnly = false
+})
+end
+
+function EnterCorrectKeyNotification()
+OrionLib:MakeNotification({
+    Name = "Correct Key Entered:",
+    Content = "You have entered Correct Key!",
+    Image = "rbxassetId://4483345998",
+    Time = 5
+})    
+end
+
+function IncorrectKeyNotification()
+OrionLib:MakeNotification({
+    Name = "Incorrect Key:",
+    Content = "Sorry you have entered the wrong key.",
+    Image = "rbxassetId://4483345998",
+    Time = 5
+})
+end
+
+
+local Tab = Window:MakeTab({
+    Name = "Key",
+    Icon = "rbxassetId://4483345998",
+    PremiumOnly = false
+})
+
+Tab:AddTextBox({
+    Name = "Enter Key",
+    Default = "",
+    TextDisappear = true,
+    Callback = function(Value)
+    _G.KeyInput = Value
+    end
+})
+
+Tab:AddButton({
+    Name = "Check Key",
+    Callback = function()
+    if _G.KeyInput == _G.Key then
+        MakeScriptHub()
+      EnterCorrectKeyNotification()
+    end
+end
+})
