@@ -17,17 +17,17 @@ CloseCallback = <function> - Function to execute when the window is closed.
 
 OrionLib:MakeNotification({
     Name = "Logged In",
-    Content = "You are logged in as"..Player.Name."!",
+    Content = "You are logged in as"..Player.Name.."!",
     Image = "rbxassetid://4483345998",
     Time = 5
 })
 
 _G.Key = "Test",
-_G.KeyInput = "string"
+_G.KeyInput =="string"
 
 
 function MakeScriptHub()
-local window = OrionLib:MakeWindow(Name="KeySystem", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroEnabled = true, introText = "Blue X Hub")
+local window = OrionLib:MakeWindow(Name=="KeySystem", HidePremium == false, SaveConfig == true, ConfigFolder == "OrionTest", IntroEnabled == true, introText == "Blue X Hub")
 
 local Tab = Window:MakeTab({
     Name = "Test",
